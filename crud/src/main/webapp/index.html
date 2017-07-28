@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>CRUD STUDENTUSER</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-resource.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/app/app.js"></script>
+<script type="text/javascript" src="/app/UserService.js"></script>
+
+</head>
+
+<body ng-app="CrudApp" ng-controller="GeneralController">
+	
+	<div class="panel panel-default">	
+  		<div class="panel-heading">StudentUser</div>  		
+	    <div class="panel-body">
+	      <form class="col-md-4" ng-submit="savestudentUser()">
+		      <div class="form-group">
+		     	 <label for="studentName">Student Name</label> <input type="text" ng-model="studentUser.name" class="form-control" id="studentName" placeholder="Enter  Name">
+		      </div>
+		      <div class="form-group">
+		     	 <label for="studentNumber">Student Number</label> <input type="text" ng-model="studentUser.studentnumber" class="form-control" id="studentNumber" placeholder="Enter Student's Number">
+		      </div>      
+			      <button type="submit" class="btn btn-default" ng-hide="!hide_ok">Submit</button>	
+			      <button type="button" class="btn btn-primary" ng-hide="hide_ok" ng-click="confirmupdate(studentUser);btn_hide()">
+					  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				  </button>     
+	      </form>
+	      <div class="table-responsive col-md-6">
+		      <table class="table table-striped">
+			      <tr>
+				      <th>Name</th>
+				      <th>Student Number</th>
+				      <th></th>
+			      </tr>
+			      <tr ng-repeat="studentUser in studentUsers">
+				      <td>{{studentUser.name}}</td>
+				      <td>{{studentUser.studentnumber}}</td>
+				      <td>
+					      <button type="button" class="btn btn-default" ng-click="updateStudentUserInit(studentUser);btn_show()">
+					    	  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+					      </button>
+					      <button type="button" class="btn btn-default" ng-click="deleteStudentUser(studentUser)">
+					      	<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+					      </button>					      	
+				  	  </td>
+			      </tr>
+		      </table>
+	   	 </div>
+  	</div>
+</body>
+
+</html>
